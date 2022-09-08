@@ -12,9 +12,12 @@ router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 
 // routes
-router.use("/posts", postsRoutes);
-router.use("/users", userRoutes);
-router.use("/comments", postCommentsRoutes);
+router.use("/api", [postsRoutes, postCommentsRoutes, userRoutes]);
+
+// 404
+router.use((req, res, next) => {
+  return res.status(404).json({ error: "Not found" });
+});
 
 // server
 const httpServer = http.createServer(router);

@@ -2,7 +2,7 @@ import express from "express";
 import controller from "../controllers/users.controller";
 
 const router = express.Router();
-router.get("/", controller.getUsers);
-router.get("/:id", controller.getUser);
+router.get("/users", controller.getUsers);
+router.get("/users/:id", controller.getUser);
 
 export = router;

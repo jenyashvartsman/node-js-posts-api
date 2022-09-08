@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import axios from "axios";
 import { IPostModel } from "../models/post.model";
 import { appConfig } from "../config/app.config";
+import { IPostCommentModel } from "../models/post-comment.model";
 
 const apiUrl = appConfig.postsApiUrl;
 
@@ -61,4 +62,27 @@ const deletePost = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export default { getPosts, getPost, createPost, updatePost, deletePost };
+// get post comments
+const getPostCommnets = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const id = req.params.id;
+  try {
+    const result = await axios.get(`${apiUrl}/${id}/comments`);
+    const comments: IPostCommentModel[] = result.data;
+    return res.json(comments);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+};
+
+export default {
+  getPosts,
+  getPost,
+  createPost,
+  updatePost,
+  deletePost,
+  getPostCommnets,
+};

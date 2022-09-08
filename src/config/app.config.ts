@@ -1,3 +1,3 @@
 export const appConfig = {
-  postsApiUrl: "https://jsonplaceholder.typicode.com/posts",
+  baseApiUrl: "https://jsonplaceholder.typicode.com",
 };

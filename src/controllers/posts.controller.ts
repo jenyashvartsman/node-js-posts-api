@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import axios from "axios";
 import { IPostModel } from "../models/post.model";
 import { appConfig } from "../config/app.config";
-import { IPostCommentModel } from "../models/post-comment.model";
 
 const apiUrl = `${appConfig.baseApiUrl}/posts`;
 
